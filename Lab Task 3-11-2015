@@ -1,0 +1,62 @@
+package list;
+
+public class main {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	moizlist Mylist = new moizlist();
+	Mylist.add(2);
+	Mylist.add(3);
+	Mylist.add(4);
+	Mylist.add(5);
+	Mylist.add(6);
+	Mylist.add(7);
+Mylist.Showall();	
+	}
+
+}
+
+
+package list;
+
+public class moizlist {
+public linknode list;
+public void add(int val)
+{
+	linknode temp;
+	if(list==null)
+	{
+	list = new linknode();
+    list.val = val;
+}
+	else{
+		temp = list;
+		list = new linknode();
+			    list.val = val;
+	temp.add = list;
+	list = temp;
+	}
+}
+public void Showall()
+{
+	linknode temp;
+	temp = list;
+			while(temp.add!=null)
+			{
+			System.out.println(temp.val);
+            temp=temp.add;
+           
+			}
+System.out.println(temp.val);
+}
+}
+
+
+
+package list;
+
+public class linknode {
+int val;
+linknode add;
+}
