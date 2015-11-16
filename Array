@@ -1,0 +1,200 @@
+main
+public class Main {
+
+	public static void main(String[] args) {
+			
+		Shape[] shapeList =  new Shape[7];
+	    shapeList[0] = new Circle(3);
+	    shapeList[1] = new Rectangle(3,4);
+	    shapeList[2] = new Rectangle(5,9);
+	    shapeList[3] = new Oval(3,4);
+	    shapeList[4] = new Square(2);
+	    shapeList[5] = new Triangle(2,1,3,4);
+	    shapeList[6] = new Trapezium(2,1,1,2,2);
+	    
+		for(int i=0;i<shapeList.length;i++){
+			System.out.print(shapeList[i].tostring()+" ");
+			System.out.print(shapeList[i].area()+" ");
+			System.out.println(shapeList[i].perimeter()+ " ");
+			System.out.print("Enter Colour for "+shapeList[i].tostring());
+			System.out.println(shapeList[i].color());
+			System.out.println("--------------------------------------------");
+		}
+
+
+	}
+
+}
+
+shape
+public abstract class Shape {
+	
+	public String ShapeN,colour;
+	
+	
+	public Shape (String name)
+	{
+		ShapeN = name;
+	}
+	
+	 public abstract double area();
+	 public abstract double perimeter();
+	 public abstract String color();
+
+	 public String tostring()
+	 {
+		 return ShapeN;
+	 }
+	 
+}
+
+oval
+import java.util.Scanner;
+
+public class Oval extends Shape{
+	
+	public double x,y;
+
+	Scanner scn = new Scanner(System.in);
+	
+	public Oval (double x, double y)
+	{
+	super("Oval");
+	this.x=x;
+	this.y=y;
+	}
+	public Oval (String ShapeN)
+	{
+		super(ShapeN);
+	}
+			
+	public double area() 
+	{
+		return Math.PI*x*y;
+	}
+	public double perimeter()
+	{
+		return 2*Math.PI*x*y;
+	}
+	public String color()
+	{
+	colour=scn.next();
+	return colour;	
+	}	
+}
+
+circle
+public class Circle extends Oval{
+
+	public double rad;
+	
+	public Circle(double rad) 
+	{
+		super("Circle");
+		x=y=rad;
+	}
+}
+
+rectangle
+import java.util.Scanner;
+
+public class Rectangle extends Shape {
+	public double len;
+	public double wid;
+			
+	Scanner scn = new Scanner(System.in);
+	
+	public Rectangle (double len, double wid)
+	{
+		super(" Rectangle");
+		this.len=len;
+		this.wid=wid;
+	}
+	public Rectangle (String ShapeN)
+	{
+		super(ShapeN);
+	}
+	public double area() 
+	{
+		return len* wid;
+		
+	}
+	public double perimeter()
+	{
+		return 2*(len + wid);
+	}
+	public String color()
+	{
+	colour=scn.next();
+	return colour;	
+	}
+}
+
+square
+public class Square extends Rectangle{
+	
+	public Square(double side)
+	{
+		super("SQUARE");
+		len=wid=side;
+	}
+
+}
+
+trapezium
+import java.util.Scanner;
+
+public class Trapezium extends Shape {
+	
+	public double a,b,h,c,d;
+	
+	Scanner scn = new Scanner(System.in);
+	
+	public Trapezium (double a, double b,double c, double d, double h)
+	{
+		super("Trapezium");
+		this.a=a; this.b=b; this.c=c; this.d=d; this.h=h;
+	}
+	public double area()
+	{
+		return ((a+b)/2)*h;
+	}
+	public double perimeter()
+	{
+		return a+b+c+d;
+	}
+	public String color()
+	{
+	colour=scn.next();
+	return colour;	
+	}
+
+}
+
+triangle
+import java.util.Scanner;
+
+public class Triangle extends Shape {
+	
+	public double b,h,a,c;
+	
+	Scanner scn = new Scanner(System.in);
+	public Triangle (double b, double h, double a, double c)
+	{
+		super("Triangle");
+		this.b=b;		this.h=h;		this.a=a;		this.c=c;
+	}
+	public double area()
+	{
+	return ((b*h)/2);
+	}
+	public double perimeter()
+	{
+	return a+b+c;
+	}
+	public String color()
+	{
+		colour=scn.next();
+		return colour;	
+	}
+}
