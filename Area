@@ -1,0 +1,97 @@
+main
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String[] args) {
+
+		int len,wid,sid,rad;
+		Scanner scn = new Scanner (System.in);
+		
+			
+		System.out.println("Enter Length for Rectangle");
+		len=scn.nextInt();
+		System.out.println("Enter Width for Rectangle");
+		wid=scn.nextInt();
+		System.out.println("Enter Side for Square");
+		sid=scn.nextInt();
+		System.out.println("Enter Radius for Circle");
+		rad=scn.nextInt();
+		
+		//Shape objshape = new Shape("");
+		Rectangle objrectangle = new Rectangle(len,wid,"Rectangle");
+		Square objsquare = new Square(sid,"Square");
+		Circle objcircle = new Circle(rad,"Circle");
+		
+		
+		
+		System.out.println(objrectangle.name+" "+objrectangle.area());
+		System.out.println(objsquare.name+" "+objsquare.area());
+		System.out.println(objcircle.name+" "+objcircle.area());
+		
+	}
+
+}
+
+rectangle
+public class Rectangle extends Shape {
+	
+	int length,width;
+
+	public Rectangle ( int len, int wid, String name)
+	{
+		super (name);
+		length=len;
+		width=wid;
+	}
+	public int area()
+	{
+		return length*width;
+	}
+}
+
+shape
+public class Shape {
+	
+	public String name;
+	
+	public Shape (String name)
+	{
+		this.name=name;
+	}
+
+}
+
+square
+public class Square extends Rectangle {
+
+	int side;
+	
+	public Square (int sid,String name)
+	{
+		super(sid, sid, name);
+		side=sid;
+	}
+	
+	public int area()
+	{
+		return side*side;
+	}
+}
+
+circle
+public class Circle extends Shape {
+
+	public int radius;
+	
+	public Circle (int rad, String name)
+	{
+		super (name);
+		this.radius=rad;
+	}
+	
+	public double area()
+	{
+		return (Math.PI*radius*radius);
+	}
+}
