@@ -1,0 +1,41 @@
+main
+public class Main {
+
+	public static void main(String[] args) {
+		
+		Shape objshape = new Shape("Yellow");
+		Rectangle objrectangle = new Rectangle();
+		
+		System.out.println(objshape.colour);
+		System.out.println(objrectangle.colour);
+	}
+
+}
+
+rectangle
+public class Rectangle extends Shape {
+	
+		/*private String name;
+		private String colouR;*/
+		
+		public Rectangle ()
+		{
+			super ("GREEEN");
+		}
+	
+}
+
+shape
+public class Shape {
+	
+	
+	//private String name;
+	public String colour;
+	
+	public Shape(String colour){
+		
+		this.colour = colour;
+		
+	}
+
+}
