@@ -1,0 +1,128 @@
+Alarm
+public class Alarm_Clock extends Clock {
+	
+      private boolean alarmOn;
+      private int hrSet, minSet,secSet;
+      public Alarm_Clock( ) 
+      {
+    	  alarmOn = false;  
+      }
+      public void setAlarm(int hr, int min, int sec) 
+      {
+    	  hrSet = hr; minSet = min; secSet=sec; alarmOn = true;
+      }
+      public void tick( ) 
+      {
+    	  super.tick( );
+     
+	if ((viewHr( ) == hrSet)&&(viewMin() == minSet)&&(viewSec() == secSet)&&alarmOn)
+	{
+		System.out.println("ring");
+    }
+    }
+      
+      public void resetAlarm( )  
+      {
+    	  alarmOn = false;
+      }
+}	     
+
+Clock
+public class Clock  {
+	
+      private Counter  hours, mins, secs;
+      public Clock( )
+      {
+    	  
+		hours = new Counter(24);
+		mins = new Counter(60);
+		secs = new Counter(60);
+	
+      }
+      
+      public  int viewHr()
+      {
+    	  return hours.viewCount();
+      }
+      public  int viewMin()
+      {
+    	  return mins.viewCount();
+      }
+      public  int viewSec()
+      {
+    	  return secs.viewCount();
+      }
+      
+      public void tick( ) 
+      {
+  	  
+    	  System.out.println(hours.viewCount() + ":" +mins.viewCount() + ":" + secs.viewCount());
+    	  
+		secs.increment( );
+		if (secs.viewCount( ) == 0) 
+		{	
+		       mins.increment( );
+		       if((secs.viewCount( )==0) && (mins.viewCount( ) == 0))
+			hours.increment( );
+		}
+      }
+}
+
+counter
+public class Counter {
+	
+      private int count, base;
+      public Counter(int  baseVal)  
+      {
+    	  base=baseVal;
+      }
+      public void increment( )  
+      {
+    	  
+    	  count++;
+    	  if(count == base)
+    	  {
+    		  reset();
+    	  }
+    	  
+      }
+      public void reset( )  
+      {
+    	  count=0;
+      }
+      public int viewCount( ) 
+      {
+    	  return count;
+      }
+      
+}
+
+main
+public class Main {
+
+	public static void main(String[] args) {
+
+	
+		Clock obj = new Clock();
+		int x=0;
+		
+/*		while(x <= 7200)
+		{
+			x++;
+			obj.tick();
+			
+		}*/
+	
+		Alarm_Clock obja = new Alarm_Clock();
+		obja.setAlarm(1,7,5);
+		
+		
+		while(x <= 7200)
+		{
+			x++;
+			obja.tick();
+			
+		}
+		
+		}
+}
